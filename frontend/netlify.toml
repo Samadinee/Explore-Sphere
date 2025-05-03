@@ -1,14 +1,15 @@
 # frontend/netlify.toml
+
 [[redirects]]
   from = "/api/*"
   to = "https://explore-sphere-production.up.railway.app/api/:splat"
   status = 200
   force = true
   headers = {
-    "Access-Control-Allow-Origin" = "https://6815d88501302c81f78830e5--explore-sphere.netlify.app",
-    "Access-Control-Allow-Methods" = "GET, POST, PUT, DELETE, OPTIONS",
-    "Access-Control-Allow-Headers" = "Content-Type, Authorization",
-    "Access-Control-Allow-Credentials" = "true"
+    Access-Control-Allow-Origin = "https://6815d88501302c81f78830e5--explore-sphere.netlify.app",
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS",
+    Access-Control-Allow-Headers = "Content-Type, Authorization",
+    Access-Control-Allow-Credentials = true
   }
 
 [[redirects]]
