@@ -48,8 +48,15 @@ const Login = () => {
       setAuthenticated(true);
       showSuccessAlert();
     } catch (error) {
-      console.error('Login failed:', error.message);
-      const message = error.message || 'Invalid username or password';
+      console.error('Login failed:', error);
+      let message = 'An unexpected error occurred';
+      if (error.message.includes('Failed to connect')) {
+        message = 'Unable to reach the server. Please check your internet connection.';
+      } else if (error.message.includes('Invalid')) {
+        message = 'Invalid username or password';
+      } else {
+        message = error.message || 'Login failed';
+      }
       setErrorMessage(message);
 
       MySwal.fire({
@@ -72,7 +79,6 @@ const Login = () => {
 
       <div className="w-full max-w-md z-10 animate-in fade-in zoom-in-95 duration-500">
         <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl hover:scale-[1.01]">
-          {/* Header with decorative image */}
           <div className="p-8 text-center relative overflow-hidden h-40 flex items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-700">
             <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80')] bg-cover bg-center"></div>
             <div className="relative z-10 space-y-2">
@@ -85,7 +91,6 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Form container */}
           <div className="p-6 sm:p-8 space-y-6">
             {errorMessage && (
               <div className="mb-4 bg-red-50 border-l-4 border-red-500 p-4 rounded-lg animate-shake">
@@ -117,7 +122,7 @@ const Login = () => {
                   Username
                 </label>
                 <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400 group-focus-within:text-blue-500 transition-colors duration-300">
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-noneilibre text-gray-400 group-focus-within:text-blue-500 transition-colors duration-300">
                     <svg
                       className="h-5 w-5"
                       fill="none"
@@ -249,7 +254,6 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Footer decoration */}
         <div className="mt-6 text-center text-white/80 text-xs space-x-2">
           <span>By logging in, you agree to our</span>
           <a

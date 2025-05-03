@@ -1,5 +1,6 @@
-// frontend/src/service/authService.js
-const API_URL = process.env.REACT_APP_API_URL || 'https://explore-sphere-production.up.railway.app/api/auth';  // Explicit URL to avoid proxy issues
+// frontend/src/services/authService.js
+const API_URL =
+  process.env.REACT_APP_API_URL || 'https://explore-sphere-production.up {{{content truncated}}} .railway.app/api/auth';
 
 export const login = async (username, password) => {
   try {
@@ -10,6 +11,7 @@ export const login = async (username, password) => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
+      credentials: 'include', // Include credentials for CORS
     });
 
     const data = await response.json();
@@ -26,11 +28,11 @@ export const login = async (username, password) => {
     return { user: { username }, token };
   } catch (error) {
     console.error('Login error:', {
+      message: error.message,
       status: error.response?.status,
       data: error.response?.data,
-      message: error.message,
     });
-    throw new Error(error.message || 'Login failed');
+    throw new Error(error.message || 'Failed to connect to the server');
   }
 };
 
@@ -48,27 +50,43 @@ export const getCurrentUser = () => {
 
 export const isAuthenticated = () => !!getToken();
 
-
-
 export const getFavorites = async () => {
   const token = getToken();
-  const res = await fetch(`${API_URL}/favorites`, {
-    headers: { Authorization: `Bearer ${token}` }
-  });
-  const data = await res.json();
-  return data.favorites || [];
+  try {
+    const res = await fetch(`${API_URL}/favorites`, {
+      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'include',
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || 'Failed to fetch favorites');
+    }
+    return data.favorites || [];
+  } catch (error) {
+    console.error('Get favorites error:', error);
+    throw error;
+  }
 };
 
 export const toggleFavorite = async (countryCode) => {
   const token = getToken();
-  const res = await fetch(`${API_URL}/favorites/toggle`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify({ countryCode })
-  });
-  const data = await res.json();
-  return data.favorites || [];
+  try {
+    const res = await fetch(`${API_URL}/favorites/toggle`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ countryCode }),
+      credentials: 'include',
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.message || 'Failed to toggle favorite');
+    }
+    return data.favorites || [];
+  } catch (error) {
+    console.error('Toggle favorite error:', error);
+    throw error;
+  }
 };
