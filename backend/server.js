@@ -10,6 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Root route (Handle GET request to /)
+app.get('/', (req, res) => {
+  res.send('Hello, World!'); // Simple response for the root URL
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 
