@@ -1,3 +1,4 @@
+// backend/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -16,21 +17,16 @@ const allowedOrigins = [
   'http://localhost:5000'
 ];
 
-// Temporary: Allow all origins for debugging
 app.use(cors({
-  origin: (origin, callback) => {
-    console.log('CORS Origin Check - Incoming origin:', origin || 'No origin', 'Request Headers:', JSON.stringify(req.headers));
-    // Allow all origins temporarily
-    callback(null, '*');
-    // Revert to specific origins after debugging
-    /*
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, origin || '*');
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
     } else {
-      console.error('CORS Rejected - Origin:', origin, 'Allowed:', allowedOrigins);
       callback(new Error('Not allowed by CORS'));
     }
-    */
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -64,8 +60,9 @@ app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
-// Handling uncaught errors
+// Error handling middleware - corrected to properly handle errors
 app.use((err, req, res, next) => {
-  console.error('Unhandled Error:', err.message, 'Origin:', req.get('origin'), 'Request Headers:', JSON.stringify(req.headers));
-  res.status(500).json({ error: 'Internal server error' });
+  console.error('Error:', err.message);
+  console.error('Request Headers:', req.headers);
+  res.status(500).json({ error: err.message || 'Internal server error' });
 });
