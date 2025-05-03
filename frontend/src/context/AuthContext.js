@@ -1,6 +1,9 @@
-// frontend/src/context/authContext.js
+// frontend/src/context/AuthContext.js
 import React, { createContext, useState, useEffect } from 'react';
 import { getCurrentUser, isAuthenticated, logout } from '../services/authService';
+
+// ✅ Define API_URL from environment variable
+const API_URL = 'http://localhost:5000/api/auth'||process.env.REACT_APP_API_URL || 'https://explore-sphere-production.up.railway.app/api/auth';
 
 export const AuthContext = createContext();
 
