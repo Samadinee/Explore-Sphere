@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://explore-sphere-production.up.railway.app/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.js"
+  status = 200

@@ -1,5 +1,5 @@
 // frontend/src/service/authService.js
-const API_URL = 'https://explore-sphere-production.up.railway.app/api/auth';  // Explicit URL to avoid proxy issues
+const API_URL = 'http://localhost:5000/api/auth'||process.env.REACT_APP_API_URL || 'https://explore-sphere-production.up.railway.app/api/auth';  // Explicit URL to avoid proxy issues
 
 export const login = async (username, password) => {
   try {
