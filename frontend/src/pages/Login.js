@@ -253,14 +253,14 @@ const Login = () => {
         <div className="mt-6 text-center text-white/80 text-xs space-x-2">
           <span>By logging in, you agree to our</span>
           <a
-            href="#"
+            href="/terms-of-service"
             className="text-white hover:underline hover:text-blue-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-0.5"
           >
             Terms of Service
           </a>
           <span>and</span>
           <a
-            href="#"
+            href="/privacy-policy"
             className="text-white hover:underline hover:text-blue-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-0.5"
           >
             Privacy Policy

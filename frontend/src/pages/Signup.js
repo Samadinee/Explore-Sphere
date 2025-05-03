@@ -212,9 +212,9 @@ const Signup = () => {
 
         <div className="mt-6 text-center text-white/80 text-xs space-x-2">
           <span>By signing up, you agree to our</span>
-          <a href="#" className="text-white hover:underline">Terms of Service</a>
+          <a href="/terms-of-service" className="text-white hover:underline">Terms of Service</a>
           <span>and</span>
-          <a href="#" className="text-white hover:underline">Privacy Policy</a>
+          <a href="/privacy-policy" className="text-white hover:underline">Privacy Policy</a>
         </div>
       </div>
     </div>
