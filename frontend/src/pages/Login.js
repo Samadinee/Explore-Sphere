@@ -74,18 +74,19 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-900 bg-[url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80')] bg-cover bg-center bg-fixed">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-900 bg-[url('https://img.goodfon.com/original/1920x1080/5/a6/karta-mira-chernyi-fon-neon-materiki-zemlia-world-map-black.jpg')] bg-cover bg-center bg-fixed">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
       <div className="w-full max-w-md z-10 animate-in fade-in zoom-in-95 duration-500">
         <div className="bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-3xl hover:scale-[1.01]">
           <div className="p-8 text-center relative overflow-hidden h-40 flex items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-700">
-            <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80')] bg-cover bg-center"></div>
+            <div className="absolute inset-0 opacity-20 bg-blue-500"></div>
             <div className="relative z-10 space-y-2">
               <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight drop-shadow-lg">
                 Welcome Back
               </h1>
               <p className="text-blue-100/90 text-sm font-medium">
+                🌍Explore Sphere<br/>
                 Continue your country exploration
               </p>
             </div>
