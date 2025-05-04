@@ -5,9 +5,6 @@ import { AuthContext } from '../context/AuthContext';
 import { ThemeContext } from '../context/ThemeContext'; // Import ThemeContext
 import Navbar from '../components/Navbar';
 
-// ✅ Define API_URL consistently with AuthContext
-const API_URL = process.env.REACT_APP_API_URL || 'https://explore-sphere-production.up.railway.app/api/auth';
-
 const Profile = () => {
   const { authenticated, handleLogout } = useContext(AuthContext);
   const { darkMode, toggleDarkMode } = useContext(ThemeContext); // Use ThemeContext
@@ -31,7 +28,7 @@ const Profile = () => {
           throw new Error('No authentication token found');
         }
 
-        const res = await fetch(`${API_URL}/profile`, {
+        const res = await fetch('http://localhost:5000/api/auth/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

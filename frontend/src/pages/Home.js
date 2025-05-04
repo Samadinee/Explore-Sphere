@@ -121,7 +121,7 @@ const Home = () => {
                     </div>
 
                     {/* Search and Filters */}
-                    <div className={`bg-white/70 dark:bg-blue-900/80 backdrop-blur-xl rounded-3xl shadow-2xl p-6 mb-10 transition-all duration-700 ${isFirstLoad ? 'translate-y-12 opacity-0' : 'translate-y-0 opacity-100'} hover:shadow-3xl border border-white/30 dark:border-blue-800/30`}>
+                    <div className={`bg-white/70 dark:from-gray-800 dark:to-gray-900 backdrop-blur-xl rounded-3xl shadow-2xl p-6 mb-10 transition-all duration-700 ${isFirstLoad ? 'translate-y-12 opacity-0' : 'translate-y-0 opacity-100'} hover:shadow-3xl border border-white/30 dark:border-blue-800/30`}>
                         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                         <div className="flex flex-col md:flex-row justify-between gap-6 mt-6">
                             <div className="w-full md:w-1/2">
