@@ -112,7 +112,7 @@ const Home = () => {
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
                     {/* Hero Section */}
                     <div className={`text-center mb-16 ${isFirstLoad ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'} transition-all duration-1000 ease-out`}>
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight drop-shadow-sm">
+                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-transparent bg-gradient-to-r from-indigo-600 to-purple-900 bg-clip-text tracking-tight drop-shadow-sm">
                             Explore the World <span className="inline-block animate-bounce">🌍</span>
                         </h1>
                         <p className="mt-4 text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto font-medium">
