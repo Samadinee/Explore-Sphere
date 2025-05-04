@@ -8,7 +8,7 @@ const LanguageFilter = ({ setSelectedLanguage }) => {
         <div className="language-filter">
             <select 
                 onChange={(e) => setSelectedLanguage(e.target.value)} 
-                className="w-full bg-white dark:bg-gray-500 border border-gray-300 dark:border-gray-700 p-2 rounded-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-gray-500 transition-colors duration-200"
+                className="w-full bg-white dark:bg-gray-600 border border-gray-300 dark:border-gray-700 p-2 rounded-lg text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-gray-500 transition-colors duration-200"
             >
                 <option value="">Filter by Language</option>
                 {languages.map((language) => (
